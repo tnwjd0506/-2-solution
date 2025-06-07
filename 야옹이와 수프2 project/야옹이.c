@@ -11,6 +11,7 @@ int main(void) {
     int soup = 0, relationship = 2, cat = 1;
     int cp = 0, feeling = 3, scratcher = 0, tower = 0;
     int foot=0;
+    int dice;
 
     printf("**** 야옹이와 수프 ****\n");
     printf("         /\\_/\\   \n");
@@ -65,6 +66,26 @@ int main(void) {
         printf("==================================================\n\n");
         Sleep(500);
 
+        printf("6-%d: 주사위 눈이 %d이하이면 그냥 기분이 나빠집니다.\n", relationship, 6 - relationship);
+        printf("주사위를 굴립니다. 또르르...\n");
+
+        dice = rand() % 6 + 1;
+        printf("%d이(가) 나왔습니다.\n", dice);
+
+        if (dice <= 6 - relationship) {
+            printf("코옹의 기분이 나빠집니다: ");
+            if (feeling > 0) {
+                feeling--;
+                printf("%d->%d \n", feeling + 1, feeling);
+            }
+            else
+                printf("0->0 \n");
+        }
+        else
+            printf("기분이 그대로 입니다.\n");
+
+
+        foot = cat;
 
         for (int i = 0; i < ROOM_WIDTH; i++) {
             printf("#");
