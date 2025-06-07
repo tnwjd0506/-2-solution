@@ -152,6 +152,51 @@ int main(void) {
             break;
         }
 
+        if (cat == HME_POS && cat == foot) {
+            printf("코옹은 자신의 집에서 편안함을 느낍니다.\n");
+            if (feeling < 3)
+                feeling++;
+        }
+        if (cat == BWL_PO) {
+            soup++;
+            dice = rand() % 3 + 1;
+            switch (dice) {
+            case 1:
+                printf("코옹이 감자수프를 만들었습니다.\n");
+                break;
+            case 2:
+                printf("코옹이 양송이수프를 만들었습니다.\n");
+                break;
+            case 3:
+                printf("코옹이 브로콜리수프를 만들었습니다.\n");
+                break;
+            }
+            printf("현재까지 만든 스푸: %d\n", soup);
+        }
+
+        if (cat == scratcher) {
+            printf("코옹은 스크래처를 긁고 놀았습니다.\n");
+            if (feeling == 3)
+                printf("기분이 조금 좋아졌습니다: %d->%d\n", feeling, feeling);
+            else {
+                feeling++;
+                printf("기분이 조금 좋아졌습니다: %d->%d\n", feeling - 1, feeling);
+            }
+        }
+
+        if (cat == tower) {
+            printf("코옹은 캣타워를 뛰어다닙니다.\n");
+            if (feeling > 1) {
+                printf("기분이 제법 좋아졌습니다: %d->3\n", feeling);
+                feeling = 3;
+            }
+            else {
+                feeling += 2;
+                printf("기분이 제법 좋아졌습니다: %d->%d\n", feeling - 2, feeling);
+            }
+        }
+
+        Sleep(500);
 
         for (int i = 0; i < ROOM_WIDTH; i++) {
             printf("#");
