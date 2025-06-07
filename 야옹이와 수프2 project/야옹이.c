@@ -11,7 +11,7 @@ int main(void) {
     int soup = 0, relationship = 2, cat = 1;
     int cp = 0, feeling = 3, scratcher = 0, tower = 0;
     int foot=0;
-    int dice;
+    int dice,up,down;
 
     printf("**** 야옹이와 수프 ****\n");
     printf("         /\\_/\\   \n");
@@ -86,6 +86,72 @@ int main(void) {
 
 
         foot = cat;
+
+        switch (feeling) {
+        case 0:
+            printf("기분이 매우나쁜 코옹은 집으로향합니다.\n");
+            cat--;
+            break;
+        case 1:
+            printf("코옹은 심심해서 스크래처쪽으로 이동합니다.\n");
+            if (scratcher != 0 && tower != 0) {
+                if (cat != scratcher && cat != tower) {
+                    if (cat - scratcher > 0 && cat - tower > 0)
+                        cat--;
+                    else if (cat - scratcher < 0 && cat - tower < 0)
+                        cat++;
+                    else {
+                        if (tower > scratcher) {
+                            up = tower;
+                            down = scratcher;
+                        }
+                        else {
+                            up = scratcher;
+                            down = tower;
+                        }
+
+                        up = up - cat;
+                        down = cat - down;
+
+                        if (up > down)
+                            cat++;
+                        else if (down > up)
+                            cat--;
+                        else
+                            cat++;
+                    }
+                }
+
+            }
+            else if (tower != 0) {
+                if (cat > tower)
+                    cat--;
+                else if (cat < tower)
+                    cat++;
+                printf("코옹은 심심해서 타워쪽으로 이동합니다.\n");
+            }
+            else if (scratcher != 0) {
+                if (cat > scratcher)
+                    cat--;
+                else if (cat < scratcher)
+                    cat++;
+                printf("코옹은 심심해서 스크래처쪽으로 이동합니다.\n");
+            }
+            else {
+                printf("놀거리가 없어서 기분이 매우 나빠집니다.\n");
+                if (feeling > 0)
+                    feeling--;
+            }
+            break;
+        case 2:
+            printf("코옹은 기분좋게 식빵을 굽고있습니다.\n");
+            break;
+        case 3:
+            printf("코옹은 골골송을 부르며 수프를 만들러갑니다.\n");
+            cat++;
+            break;
+        }
+
 
         for (int i = 0; i < ROOM_WIDTH; i++) {
             printf("#");
