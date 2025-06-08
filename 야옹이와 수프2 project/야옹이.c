@@ -11,7 +11,7 @@ int main(void) {
     int soup = 0, relationship = 2, cat = 1;
     int cp = 0, feeling = 3, scratcher = 0, tower = 0;
     int foot=0;
-    int dice,up,down;
+    int dice,up,down,mouse=0,lazer=0,toy=1,a;
 
     printf("**** 야옹이와 수프 ****\n");
     printf("         /\\_/\\   \n");
@@ -246,6 +246,24 @@ int main(void) {
         }
         printf("\n");
         Sleep(500);
+
+        printf("어떤 상호작용을 하시겠습니까?\n   0. 아무것도 하지 않음\n   1. 긁어 주기\n");
+
+        if (mouse != 0 && lazer != 0) {
+            if (lazer == 2)
+                printf("   2. 레이저 포인터로 놀아 주기\n   3. 장난감 쥐로 놀아 주기\n");
+            else
+                printf("   2. 장난감 쥐로 놀아 주기\n   3. 레이저 포인터로 놀아 주기\n");
+        }
+        else if (mouse == 0 && lazer == 2)
+            printf("   2. 레이저 포인터로 놀아 주기\n");
+        else if (mouse == 2 && lazer == 0)
+            printf("   2. 장난감 쥐로 놀아 주기\n");
+
+        do {
+            printf(">>");
+            scanf_s("%d", &a);
+        } while (a < 0 || a > toy);
     }
     return 0;
 }
