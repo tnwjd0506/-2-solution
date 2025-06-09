@@ -12,6 +12,7 @@ int main(void) {
     int cp = 0, feeling = 3, scratcher = 0, tower = 0;
     int foot=0;
     int dice,up,down,mouse=0,lazer=0,toy=1,a,count;
+	int quest = 0, answer = 0;
 
     printf("**** 야옹이와 수프 ****\n");
     printf("         /\\_/\\   \n");
@@ -65,6 +66,22 @@ int main(void) {
         }
         printf("==================================================\n\n");
         Sleep(500);
+
+        if (quest == 3) {
+            printf("돌발퀘스트 등장!\n");
+            printf("10+20+30= \n");
+            scanf_s("%d", &answer);
+            if (answer == 35) {
+                printf("Wow! 정답입니다!\n");
+                printf("cp가 5 증가합니다.\n");
+				cp += 5;
+            }
+            else {
+                printf("Oh no.. 오답입니다.\n");
+                printf("정답은 35입니다.\n");
+                printf("다음에 또 만나요 ^~^\n");
+            }
+        }
 
         printf("6-%d: 주사위 눈이 %d이하이면 그냥 기분이 나빠집니다.\n", relationship, 6 - relationship);
         printf("주사위를 굴립니다. 또르르...\n");
@@ -281,9 +298,9 @@ int main(void) {
 
         if (a == 0) {
             if (feeling == 0)
-                printf("코옹의 기분이 기분이 나빠졌습니다: %d->%d\n", feeling, feeling);
+                printf("코옹의 기분이 나빠졌습니다: %d->%d\n", feeling, feeling);
             else {
-                printf("코옹의 기분이 기분이 나빠졌습니다: %d->%d\n", feeling, feeling - 1);
+                printf("코옹의 기분이 나빠졌습니다: %d->%d\n", feeling, feeling - 1);
                 feeling--;
             }
             printf("친밀도는 주사위를 던져서 눈이 5이하이면 1감소\n");
